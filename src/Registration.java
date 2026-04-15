@@ -1,12 +1,5 @@
 
-import java.sql.Connection;
-import java.sql.Statement;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
+
 public class Registration extends javax.swing.JFrame {
     
     
@@ -15,39 +8,7 @@ public class Registration extends javax.swing.JFrame {
   
     public Registration() {
         initComponents();
-        try {
-            Connection();
-        } catch (SQLException ex) {
-            System.getLogger(Registration.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
-       
-    }
-    
-    Connection con;;
-    
-    Statement st;
-    
-    private static final String DbName = "joddidb";
-    private static final String DbDriver = "com.mysql.cj.jdbc.Driver";
-    private static final String DbUrl = "jdbc:mysql://localhost:3306/"+DbName;
-    private static final String DbUsername = "root";
-    private static final String DbPassword = "";
-    
-    
-    public void Connection () throws SQLException { 
-        try {
-            Class.forName(DbDriver);
-            con = DriverManager.getConnection(DbUrl,DbUsername,DbPassword);
-            st = con.createStatement();
-            if (con != null) {
-                System.out.println("Connection successful");
-            }
-        } catch (ClassNotFoundException ex) {
-            System.getLogger(Registration.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
-        }
      
-    
-
     }
     
     
@@ -207,26 +168,7 @@ public class Registration extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
   String username, password;
-       if ("".equals(txtRegUsername.getText())) {
-            JOptionPane.showMessageDialog(new JFrame(), "Required Username");
-        }
-       if ("".equals(txtRegPassword.getText())) {
-            JOptionPane.showMessageDialog(new JFrame(), "Required Password");
-       }
-       else{
-           username = txtRegUsername.getText();
-           password = txtRegPassword.getText();
-           
-           String queryRegister = "INSERT INTO userdetails (accUsername, accPassword)" + "VALUES ('"+username+"','"+password+"')";
-            try {
-                st.execute(queryRegister);
-            } catch (SQLException ex) {
-               Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, (String) null, ex);
-            }
-            JOptionPane.showMessageDialog(new JFrame(), "Data added successfully");
-            txtRegUsername.setText("");
-            txtRegPassword.setText("");
-       }        // TODO add your handling code here:
+   // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
